@@ -1,0 +1,17 @@
+# Resultados de simulação
+*.csv
+*.json
+__pycache__/
+*.pyc
+
+# Arquivos pesados
+*.jar
+*.ork
+
+# Ambiente
+.env
+venv/
+.venv/
+
+# VS Code
+.vscode/
