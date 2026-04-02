@@ -85,15 +85,20 @@ def start_jvm(jar: Path):
         return
     if not jar.exists():
         raise FileNotFoundError(f"JAR não encontrado: {jar}")
+    
     jpype.startJVM(
         jpype.getDefaultJVMPath(),
-        f"-Djava.class.path={jar}",
+        f"-Djava.class.path={jar.resolve()}",
         "-Xmx1g",
-        "-Djava.awt.headless=true",  # sem GUI
+        "-Djava.awt.headless=true",
+        "--add-opens=java.base/java.lang=ALL-UNNAMED",   # ← necessário no Java 17+
+        "--add-opens=java.base/java.util=ALL-UNNAMED",
         convertStrings=False,
     )
+    
+    # Confirma que o JAR foi carregado
+    import jpype.imports
     print(f"[JVM] iniciada — {jpype.getDefaultJVMPath()}")
-
 
 def init_openrocket():
     """
