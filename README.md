@@ -5,11 +5,11 @@
 A small Python tool to run Monte Carlo-style experiments for OpenRocket projects.
 
 ## What is in this repo
-- `openrocket_montecarlo.py`: main script
-- `base_rocket.ork`: sample OpenRocket design
-- `OpenRocket-15.03.jar`: OpenRocket runtime (used by the script)
+- `src/openrocket_montecarlo.py`: main script
+- `assets/base_rocket.ork`: sample OpenRocket design
+- `assets/OpenRocket-15.03.jar`: OpenRocket runtime (used by the script)
 - `settings.json`: example settings
-- `test_jpype.py`: quick JPype check
+- `tests/test_jpype.py`: quick JPype check
 
 ## Requirements
 - Python 3.8+
@@ -21,8 +21,8 @@ A small Python tool to run Monte Carlo-style experiments for OpenRocket projects
 2. Install Python deps:
    - `pip install jpype1`
 3. Run:
-   - `python openrocket_montecarlo.py`
+   - `python src/openrocket_montecarlo.py`
 
 ## Notes
 - Update `settings.json` to match your simulation inputs.
-- The script expects the OpenRocket JAR to be present in the repo.
+- The script expects the OpenRocket JAR to be present in `assets/`.

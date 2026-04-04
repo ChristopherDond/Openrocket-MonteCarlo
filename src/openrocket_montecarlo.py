@@ -5,14 +5,14 @@ Executa N simulações variando parâmetros do foguete,
 coleta métricas e ranqueia o design mais estável.
 
 Requisitos:
-  pip install jpype1 numpy pandas rich
-  Java 11+ instalado
-  OpenRocket JAR em OPENROCKET_JAR
-  Um arquivo .ork base em ROCKET_ORK
+    pip install jpype1 numpy pandas rich
+    Java 11+ instalado
+    OpenRocket JAR em OPENROCKET_JAR (opcional)
+    Um arquivo .ork base em ROCKET_ORK (opcional)
 
 Uso:
-  python openrocket_montecarlo.py
-  python openrocket_montecarlo.py --runs 5000 --output resultados.csv
+    python src/openrocket_montecarlo.py
+    python src/openrocket_montecarlo.py --runs 5000 --output resultados.csv
 """
 
 from __future__ import annotations
@@ -34,8 +34,14 @@ import pandas as pd
 # ─────────────────────────────────────────────
 # CONFIGURAÇÃO — edite aqui
 # ─────────────────────────────────────────────
-OPENROCKET_JAR = Path("openrocket-15.03.jar")   # caminho para o JAR
-ROCKET_ORK     = Path("base_rocket.ork")         # arquivo base do foguete
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+def _env_path(name: str, default: Path) -> Path:
+    value = os.getenv(name)
+    return Path(value) if value else default
+
+OPENROCKET_JAR = _env_path("OPENROCKET_JAR", BASE_DIR / "assets" / "OpenRocket-15.03.jar")
+ROCKET_ORK     = _env_path("ROCKET_ORK",     BASE_DIR / "assets" / "base_rocket.ork")
 
 # Parâmetros Monte Carlo (fator multiplicador em relação ao valor base)
 PARAM_RANGES = {

@@ -7,6 +7,7 @@ __pycache__/
 # Arquivos pesados
 *.jar
 *.ork
+assets/*
 
 # Ambiente
 .env
