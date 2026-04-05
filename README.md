@@ -1,6 +1,6 @@
 # OpenRocket Monte Carlo
 
-**[English Version](README.md)**
+**[Versão em Portugues](README.pt-BR.md)**
 
 A small Python tool to run Monte Carlo-style experiments for OpenRocket projects.
 
